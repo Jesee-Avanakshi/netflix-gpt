@@ -3,7 +3,12 @@ import Header from './Header'
 import { useState,useRef } from 'react';
 import validate from '../utils/validate';
 import {auth} from '../utils/firebase';
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
+
+import { addUser } from '../utils/userSlice';
+import { netflix_bg,useravatar } from '../utils/constants';
+
 
 const Login = () => {
 
@@ -12,9 +17,10 @@ const Login = () => {
   const email =useRef(null)
   const password = useRef(null)
   const name =useRef(null)
-  
+  const dispatch =useDispatch();
 
   const handleButtonClick =()=>{
+    
     //validate form data
     const msg = validate(email.current.value,password.current.value);
     setErrorMessage(msg);
@@ -26,9 +32,20 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log(user)
-          // ...
-        })
+          
+          updateProfile(user, {
+            displayName: name.current.value, photoURL:useravatar
+          }).then(() => {
+            const {uid,email,displayName,photoURL} = auth.currentUser;
+            dispatch(addUser({uid:uid,email:email,displayName:displayName ,photoURL:photoURL}));
+
+          }).catch((error) => {
+            // An error occurred
+            // ...
+            setErrorMessage(errorMessage);
+          });
+          
+          })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -42,13 +59,13 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user)
+
             // ...
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorMessage)
+            
           });
 
       }
@@ -61,7 +78,7 @@ const Login = () => {
     <div>
     <Header />
     <div  className='absolute'>
-      <img src="https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/web/US-en-20241216-TRIFECTA-perspective_16158377-32b2-42cc-ba71-15929be7d1f2_medium.jpg" alt='backgroundImage'/>
+      <img src={netflix_bg} alt='backgroundImage' className='relative'/>
     </div>
     <form onSubmit={(e)=>e.preventDefault()} className='relative p-12 bg-black  w-3/12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-70'>
       <h1 className='font-bold text-3xl'> 
