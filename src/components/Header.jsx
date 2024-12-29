@@ -38,13 +38,13 @@ const Header = () => {
 
 
   return (
-    <div className='relative  px-8 py-2 bg-gradient-to-b form-black z-10 w-screen flex justify-between'>
+    <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between'>
       
       <img className='w-32' 
       src = {logo} alt='logo'/>
     {user && (<div className='flex p-2'>
       <img alt="usericon" src= {user.photoURL} className='w-12 h-12'/>
-      <button onClick={handleSignOut} className='text-bold text-black'> (Sign Out)</button>
+      <button onClick={handleSignOut} className='text-bold text-white'> (Sign Out)</button>
     </div>)}
     </div>
   )

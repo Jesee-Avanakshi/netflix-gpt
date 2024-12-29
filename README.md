@@ -21,6 +21,19 @@
 - Add hardcoded values to constants file
 - Register TMDI app and created an app and got access token
 - Fetching Nowplaying movies data from TMDI Nowplaying API
+- Customhook for NowPlayingMovies
+- create Movie Slice
+- update store with movies data
+- Planning for Main container and secondary container
+- Fetch data for trailer video
+- Update store with Trailer video data
+- Embed the youtube video and make it autoplay 
+- Use Tailwind to style the components
+- Build secondary Component
+- Build Movie List and Movie Card
+- TMDB image CDN URL
+- usePopular Movies hook 
+- similarly toprated, upcoming hooks 
 
 
 

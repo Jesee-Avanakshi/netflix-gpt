@@ -1,30 +1,35 @@
-import { data } from 'autoprefixer'
+
 import React from 'react'
-import { useEffect } from 'react'
-import { API_OPTIONS } from '../utils/constants'
 import Header from './Header'
 
+import MainContainer from './MainContainer';
+import SecondaryContainer from './SecondaryContainer';
+import usePopularMovies from '../hooks/usePopularMovies.js';
+import useNowPlaying from '../hooks/useNowPlaying.js';
+import useTopRated from '../hooks/useTopRated';
+import useUpcoming from '../hooks/useUpcoming';
 const Browse = () => {
-
-  const getNowPlayingMovies = async()=>{
-    const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?page=1',
-    API_OPTIONS);
-
-    const json = await data.json();
-    console.log(json)
-
-  };
-
-  useEffect(()=>{
-    getNowPlayingMovies();
-  },[])
-
-
+  
+  useNowPlaying();
+  usePopularMovies();
+  useTopRated();
+  useUpcoming();
 
 
   return (
     <div>
       <Header/>
+     {/* 
+      MainContainer
+        video Background
+        video Title
+
+      Secondary Container
+        Movielist*n
+          card list*n
+      */}
+      <MainContainer/>
+      <SecondaryContainer/>
     </div>
   )
 }
