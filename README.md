@@ -34,8 +34,8 @@
 - TMDB image CDN URL
 - usePopular Movies hook 
 - similarly toprated, upcoming hooks 
-
-
+- GPT Search Page
+- GPT search Bar
 
 
 # Features:

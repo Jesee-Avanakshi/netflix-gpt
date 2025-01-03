@@ -5,6 +5,7 @@ import {useNavigate } from 'react-router-dom';
 import { auth } from '../utils/firebase';
 import { addUser,removeUser } from '../utils/userSlice';
 import {logo} from '../utils/constants';
+import {toggleGptSearch} from '../utils/gptSlice';
 
 const Header = () => {
   const dispatch =useDispatch();
@@ -36,13 +37,20 @@ const Header = () => {
     return ()=> unsubscribe();
   },[])
 
+  const handleGptSearch = ()=>{
+    console.log("Inside handle Gpt Search button clicked");
+    console.log()
+    dispatch(toggleGptSearch());
+  }
 
   return (
     <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between'>
-      
+
       <img className='w-32' 
       src = {logo} alt='logo'/>
     {user && (<div className='flex p-2'>
+      <button className='bg-yellow-300 rounded-md mr-5 p-4 font-bold' 
+      onClick={handleGptSearch}>GPT Search</button>
       <img alt="usericon" src= {user.photoURL} className='w-12 h-12'/>
       <button onClick={handleSignOut} className='text-bold text-white'> (Sign Out)</button>
     </div>)}
