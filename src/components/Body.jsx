@@ -21,11 +21,11 @@ const Body = () => {
 
 
   return (
-    
-        <RouterProvider router={appRouter}/>
-   
+    <div>
+      <RouterProvider router={appRouter}/>
+    </div>
     
   );
 };
 
-export default Body
+export default Body;

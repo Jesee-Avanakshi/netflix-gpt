@@ -78,16 +78,16 @@ const Login = () => {
     <div>
     <Header />
     <div  className='absolute'>
-      <img src={netflix_bg} alt='backgroundImage' className='relative'/>
+      <img src={netflix_bg} alt='backgroundImage' className='h-screen object-cover'/>
     </div>
-    <form onSubmit={(e)=>e.preventDefault()} className='relative p-12 bg-black  w-3/12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-70'>
-      <h1 className='font-bold text-3xl'> 
+    <form onSubmit={(e)=>e.preventDefault()} className='absolute p-12 bg-black  w-full md:w-3/12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'>
+      <h1 className='font-bold text-3xl py-4'> 
       {isSignIn?"Sign In":"Sign Up"}
       </h1>
-      {!isSignIn && (<input type="text" placeholder='Full Name' className="p-2 my-4 w-full rounded-md bg-gray-700" ref={name}/>)}
-      <input type="text" placeholder='Email Address' className="p-2 my-4 w-full rounded-md bg-gray-700" ref={email}/>
+      {!isSignIn && (<input type="text" placeholder='Full Name' className="p-4 my-4 w-full rounded-md bg-gray-700" ref={name}/>)}
+      <input type="text" placeholder='Email Address' className="p-4 my-4 w-full rounded-md bg-gray-700" ref={email}/>
 
-      <input type='password' placeholder='Password' className="p-2 my-4 rounded-md w-full bg-gray-700" ref={password}/>
+      <input type='password' placeholder='Password' className="p-4 my-4 rounded-md w-full bg-gray-700" ref={password}/>
       
       <p className='text-lg text-red-400'>{errorMessage}</p>
 
@@ -101,4 +101,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

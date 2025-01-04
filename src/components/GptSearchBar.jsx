@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { API_OPTIONS } from '../utils/constants';
 import { addGptMovieResult } from '../utils/gptSlice';
-import client from '../utils/openAI'
+import client from '../utils/openAI';
 
 const GptSearchBar = () => {
   const searchText = useRef(null);
@@ -34,17 +34,16 @@ const GptSearchBar = () => {
         //Error Handling
        
     }
-    console.log(gptResults.choices?.[0]?.message?.content);
+    
 
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
 
-    console.log(gptMovies);
+    
     const promiseArray = gptMovies.map(movie => searchMovieTMDB(movie));
-
+    
     const tmdbResults = await Promise.all(promiseArray);
-
-    console.log(tmdbResults);
-
+    
+    
     dispatch(addGptMovieResult({movieNames:gptMovies,movieResults:tmdbResults}));
     
   };
@@ -52,10 +51,10 @@ const GptSearchBar = () => {
 
 
   return (
-    <div className='pt-[10%] flex justify-center'>
-        <form className='w-1/2 bg-black rounded-lg grid grid-cols-12' onSubmit={(e)=>e.preventDefault()}>
-            <input type="text" ref = {searchText} className='p-4 m-4 col-span-9 rounded-lg' placeholder='what do you wanna watch today?'/>
-            <button type ="submit" className='py-2 px-4 m-4 bg-red-700 col-span-3 text-white rounded-lg'
+    <div className=' pt-[40%] md:pt-[10%] flex justify-center'>
+        <form className='w-full md:w-1/2 bg-black rounded-lg grid grid-cols-12' onSubmit={(e)=>e.preventDefault()}>
+            <input type="text" ref = {searchText} className='p-4 m-0 md:m-4 col-span-9 rounded-sm md:rounded-lg' placeholder='what do you wanna watch today?'/>
+            <button type ="submit" className='py-0 md:py-2 px-0 md:px-4 m-0 md:m-4 bg-red-700 col-span-3 text-white rounded-sm md:rounded-lg'
             onClick={handleGPTSearch}>Search</button>
         </form>
     </div>

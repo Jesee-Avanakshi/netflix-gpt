@@ -1,7 +1,5 @@
-
-import React from 'react'
-import Header from './Header'
-
+import React from 'react';
+import Header from './Header';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 import usePopularMovies from '../hooks/usePopularMovies.js';
@@ -22,13 +20,15 @@ const Browse = () => {
     <div>
       <Header/>
       {
-        showGptSearch?(<GptSearch/>):(<><MainContainer/>
-        <SecondaryContainer/></>)
-      }
-      
-      
+        showGptSearch?(<GptSearch/>
+        ):(
+        <>
+          <MainContainer/>
+          <SecondaryContainer/>
+        </>
+        )}
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;

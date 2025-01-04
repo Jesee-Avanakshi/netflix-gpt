@@ -18,6 +18,7 @@ const Header = () => {
      
     }).catch((error)=>{
       //An error happened
+      navigate("/error");
     });
   };
 
@@ -27,37 +28,38 @@ const Header = () => {
         //signin
         const {uid,email,displayName,photoURL} =user;
         dispatch(addUser({uid:uid,email:email,displayName:displayName ,photoURL:photoURL}));
-        navigate("/browse")
+        navigate("/browse");
       }else{
         //sign out
         dispatch(removeUser());
-        navigate("/")
+        navigate("/");
       }
 
     });
     return ()=> unsubscribe();
-  },[])
+  },[]);
 
   const handleGptSearch = ()=>{
     
     dispatch(toggleGptSearch());
-  }
+  };
 
   return (
-    <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between'>
-
-      <img className='w-32' 
+    <div className='absolute w-screen p-0 md:px-8 md:py-0 bg-gradient-to-b from-slate-500 z-10  flex flex-col md:flex-row justify-between '>
+      <img className='w-44 mx-auto md:mx-0' 
       src = {logo} alt='logo'/>
-    {user && (<div className='flex p-2'>
-      <button className='bg-yellow-300 rounded-md mr-5 p-4 font-bold' 
+    <div className='flex justify-center space-y-3'>
+    {user && (<div className='flex flex-row p-2 '>
+      <button className='bg-yellow-300 rounded-md mx-2 my-3 md:mr-5 p-4 font-bold ' 
       onClick={handleGptSearch}>
         {gpt?"HOME":"GPT Search"}
         </button>
-      <img alt="usericon" src= {user.photoURL} className='w-12 h-12'/>
-      <button onClick={handleSignOut} className='text-bold text-white'> (Sign Out)</button>
+      <img alt="usericon" src= {user.photoURL} className='hidden md:block my-auto w-12 h-12'/>
+      <button onClick={handleSignOut} className='bg-blue-300 md:bg-transparent md:text-white rounded-md mx-auto my-3 md:mr-5 p-4 font-bold'> Sign Out</button>
     </div>)}
     </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Header 
+export default Header;

@@ -37,6 +37,8 @@
 - GPT Search Page
 - GPT search Bar
 - Get GPT Movie Recommendation and display them 
+- Better visulazation for different size of devices using tailwind CSS
+- Memoization
 
 
 # Features:
