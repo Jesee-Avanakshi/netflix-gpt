@@ -11,6 +11,7 @@ const Header = () => {
   const dispatch =useDispatch();
   const navigate =useNavigate();
   const user =useSelector(store=>store.user);
+  const gpt = useSelector(store=>store.gpt.showGptSearch);
   const handleSignOut = ()=>{
     signOut(auth).then(()=>{
       //signout logic
@@ -38,8 +39,7 @@ const Header = () => {
   },[])
 
   const handleGptSearch = ()=>{
-    console.log("Inside handle Gpt Search button clicked");
-    console.log()
+    
     dispatch(toggleGptSearch());
   }
 
@@ -50,7 +50,9 @@ const Header = () => {
       src = {logo} alt='logo'/>
     {user && (<div className='flex p-2'>
       <button className='bg-yellow-300 rounded-md mr-5 p-4 font-bold' 
-      onClick={handleGptSearch}>GPT Search</button>
+      onClick={handleGptSearch}>
+        {gpt?"HOME":"GPT Search"}
+        </button>
       <img alt="usericon" src= {user.photoURL} className='w-12 h-12'/>
       <button onClick={handleSignOut} className='text-bold text-white'> (Sign Out)</button>
     </div>)}

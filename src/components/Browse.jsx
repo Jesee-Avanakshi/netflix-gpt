@@ -16,7 +16,7 @@ const Browse = () => {
   usePopularMovies();
   useTopRated();
   useUpcoming();
-
+  
 
   return (
     <div>

@@ -5,7 +5,9 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDYwYjNhNThhYjRmMWY4MmJiMGM3MDVlMWFhMWRlYyIsIm5iZiI6MTczNTE4NjY5My4xMjQsInN1YiI6IjY3NmNkOTA1Zjk0NTRlZWIxZDkyNzAzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.cwNc3Q801FPJd2lIHqWG7cnOYgdpo9FSiFwt5mImny4'
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API}` ,
     }
   };
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const OPEN_AI_KEY = `${import.meta.env.VITE_OPEN_AI_KEY}`;
