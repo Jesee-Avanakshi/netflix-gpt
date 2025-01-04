@@ -36,6 +36,7 @@
 - similarly toprated, upcoming hooks 
 - GPT Search Page
 - GPT search Bar
+- Get GPT Movie Recommendation and display them 
 
 
 # Features:
